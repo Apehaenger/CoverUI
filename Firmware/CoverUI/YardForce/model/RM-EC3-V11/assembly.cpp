@@ -94,14 +94,14 @@ ButtonsRMEC3V11 buttons(kBtnDefByButtonNumMap);
 
 const Emergency::PinStateDef kEmergencyPinStateDefs[] = {
 #ifdef MOD_HALL
-    {PIN_HALL1, INPUT_PULLUP, Emergency_state::Emergency_lift1},
-    {PIN_HALL2, INPUT_PULLUP, Emergency_state::Emergency_lift1},
-    {PIN_HALL3, INPUT_PULLUP, Emergency_state::Emergency_lift2},
-    {PIN_HALL4, INPUT_PULLUP, Emergency_state::Emergency_lift2},
+    {PIN_LIFT, INPUT_PULLUP, EmergencyState::LIFT},
+    {PIN_LIFTX, INPUT_PULLUP, EmergencyState::LIFTX},
+    {PIN_LBUMP, INPUT_PULLUP, EmergencyState::LBUMP},
+    {PIN_RBUMP, INPUT_PULLUP, EmergencyState::RBUMP},
 #endif
 #ifdef MOD_STOP
-    {PIN_STOP1, INPUT_PULLUP, Emergency_state::Emergency_stop1},
-    {PIN_STOP2, INPUT_PULLUP, Emergency_state::Emergency_stop2},
+    {PIN_STOP1, INPUT_PULLUP, EmergencyState::STOP1},
+    {PIN_STOP2, INPUT_PULLUP, EmergencyState::STOP2},
 #endif
 };
 

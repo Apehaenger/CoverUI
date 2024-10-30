@@ -53,10 +53,10 @@
 #define PIN_STOP_JP6 PC10
 #define PIN_STOP_JP8 PA15
 
-#define PIN_HALL1 PA8  // LIFT
-#define PIN_HALL2 PA9  // LIFTX
-#define PIN_HALL3 PC8  // LBUMP
-#define PIN_HALL4 PC9  // RBUMP
+#define PIN_LIFT PA8  // LIFT
+#define PIN_LIFTX PA9  // LIFTX
+#define PIN_LBUMP PC8  // LBUMP
+#define PIN_RBUMP PC9  // RBUMP
 
 extern LEDcontrolRMECOWV1x leds;
 

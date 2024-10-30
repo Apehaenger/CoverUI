@@ -211,7 +211,8 @@ check section [usage](#usage) about the [LED](#meaning-of-the-leds) and [Button]
 
 | Version [^4] | Changes | Date |
 | ------- | ------- | ---- |
-| 2.06    | - Add MOD_HALL support to YardForce RM-ECOW-V1.0.0<br>- Fix heap overflow which could happen when an action button got pressed multiple (10-20) times | 2024-09-29
+| 2.10    | - Separate hall support. Require OpenMower FW >= ??? | 2024-11-??
+| 2.06    | - Add STM32 MCU support to RM-ECOW-V1.1.0<br>- Add MOD_HALL support to YardForce RM-ECOW-V1.0.0<br>- Fix heap overflow which could happen when an action button got pressed multiple (10-20) times | 2024-09-29
 | 2.05    | - YardForce RM-ECOW-V1.1.0 support<br>- Backside alive LED is now software driven (hwtimer independent)<br>- Fix emergency-clear LED-countdown for RM-ECOW-V1.0.0| 2024-06-30
 | 2.04    | - YardForce RM-ECOW-V1.0.0 support<br>- Dropped separate versioning<br>- Fully refactored | 2023-11-14
 | 1.00    | - YardForce SAxPRO (Rev6) Dot-Matrix-Display support | 2023-09-27

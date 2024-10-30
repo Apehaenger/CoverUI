@@ -2,8 +2,8 @@
  * @file C500/assembly.cpp
  * @author Apehaenger (joerg@ebeling.ws)
  * @brief YardForce RM-ECOW-V1.0.0 CoverUI Assembly for OpenMower https://github.com/ClemensElflein/OpenMower
- * @version 0.1
- * @date 2024-10-01
+ * @version 0.2
+ * @date 2024-10-30
  *
  * @copyright Copyright (c) 2024
  *
@@ -88,9 +88,9 @@ ButtonsC500 buttons(kBtnDefByButtonNumMap);
 
 // ----- Emergency -----
 const Emergency::PinStateDef kEmergencyPinStateDefs[] = {
-    {PIN_HALL_STOP_WHITE, INPUT, Emergency_state::Emergency_stop1},
-    {PIN_HALL_STOP_YELLOW, INPUT, Emergency_state::Emergency_stop2},
-    {PIN_HALL_WHEEL_RED, INPUT, Emergency_state::Emergency_lift1},
-    {PIN_HALL_WHEEL_BLUE, INPUT, Emergency_state::Emergency_lift2}};
+    {PIN_HALL_STOP_WHITE, INPUT, EmergencyState::STOP1},
+    {PIN_HALL_STOP_YELLOW, INPUT, EmergencyState::STOP2},
+    {PIN_HALL_WHEEL_RED, INPUT, EmergencyState::LIFT},
+    {PIN_HALL_WHEEL_BLUE, INPUT, EmergencyState::LIFTX}};
 
 Emergency emergency(kEmergencyPinStateDefs, sizeof(kEmergencyPinStateDefs) / sizeof(Emergency::PinStateDef));

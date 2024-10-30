@@ -2,8 +2,8 @@
  * @file RM-EC3-V11/assembly.hpp
  * @author Apehaenger (joerg@ebeling.ws)
  * @brief YardForce RM-EC3-V1.1 CoverUI Assembly for OpenMower https://github.com/ClemensElflein/OpenMower
- * @version 0.1
- * @date 2024-10-01
+ * @version 0.2
+ * @date 2024-10-30
  *
  * @copyright Copyright (c) 2024
  *
@@ -61,10 +61,10 @@ extern LEDcontrolRMEC3V11 leds;
 #define PIN_STOP1 PC15
 #define PIN_STOP2 PB6
 
-#define PIN_HALL1 PB15
-#define PIN_HALL2 PC0
-#define PIN_HALL3 PC8
-#define PIN_HALL4 PC9
+#define PIN_LIFT PC0
+#define PIN_LIFTX PC9
+#define PIN_LBUMP PC8
+#define PIN_RBUMP PB15
 
 class ButtonsRMEC3V11 : public Buttons {
    public:

@@ -32,18 +32,30 @@ enum HighLevelMode {
     MODE_RECORDING = 3 // ROS connected, Manual mode during recording etc
 };
 
-#define LL_EMERGENCY_BIT_LATCH 0b00000001
-#define LL_EMERGENCY_BIT_HALL1 0b00001000
-#define LL_EMERGENCY_BIT_HALL2 0b00010000
-#define LL_EMERGENCY_BIT_HALL3 0b00000010
-#define LL_EMERGENCY_BIT_HALL4 0b00000100
+// clang-format off
+#define LL_EMERGENCY_BIT_LATCH (1 << 0)  // Any emergency latch
+#define LL_EMERGENCY_BIT_STOP  (1 << 1)  // Stop
+#define LL_EMERGENCY_BIT_LIFT  (1 << 2)  // Lift (or tilt)
 
-#define LL_EMERGENCY_BIT_LIFT1 LL_EMERGENCY_BIT_HALL1
-#define LL_EMERGENCY_BIT_LIFT2 LL_EMERGENCY_BIT_HALL2
-#define LL_EMERGENCY_BITS_LIFT (LL_EMERGENCY_BIT_LIFT1 | LL_EMERGENCY_BIT_LIFT2)
-#define LL_EMERGENCY_BIT_STOP1 LL_EMERGENCY_BIT_HALL3
-#define LL_EMERGENCY_BIT_STOP2 LL_EMERGENCY_BIT_HALL4
-#define LL_EMERGENCY_BITS_STOP (LL_EMERGENCY_BIT_STOP1 | LL_EMERGENCY_BIT_STOP2)
+#define LL_EMERGENCY_BIT_CU_LATCH (1 << 0)  // Any emergency latch
+#define LL_EMERGENCY_BIT_CU_STOP1 (1 << 1)  // Stop1
+#define LL_EMERGENCY_BIT_CU_STOP2 (1 << 2)  // Stop2
+#define LL_EMERGENCY_BIT_CU_LIFT  (1 << 3)  // LIFT
+#define LL_EMERGENCY_BIT_CU_LBUMP (1 << 4)  // LBUMP
+#define LL_EMERGENCY_BIT_CU_LIFTX (1 << 5)  // LIFTX
+#define LL_EMERGENCY_BIT_CU_RBUMP (1 << 6)  // RBUMP
+// clang-format on
+
+// Same bitmask as in ll_status.emergency_bitmask (LowLevel, datatypes.h)
+enum class EmergencyState {
+    LATCH = LL_EMERGENCY_BIT_CU_LATCH,
+    STOP1 = LL_EMERGENCY_BIT_CU_STOP1,
+    STOP2 = LL_EMERGENCY_BIT_CU_STOP2,
+    LIFT = LL_EMERGENCY_BIT_CU_LIFT,
+    LBUMP = LL_EMERGENCY_BIT_CU_LBUMP,
+    LIFTX = LL_EMERGENCY_BIT_CU_LIFTX,
+    RBUMP = LL_EMERGENCY_BIT_CU_RBUMP
+};
 
 #pragma pack(push, 1)
 struct ll_status {
@@ -63,10 +75,8 @@ struct ll_status {
     float uss_ranges_m[5];
     // Emergency bitmask:
     // Bit 0: Emergency latch
-    // Bit 1: Emergency 0 active
-    // Bit 2: Emergency 1 active
-    // Bit 3: Emergency 2 active
-    // Bit 4: Emergency 3 active
+    // Bit 1: Emergency/Stop
+    // Bit 2: Emergency/Lift (or tilt)
     uint8_t emergency_bitmask;
     // Charge voltage
     float v_charge;

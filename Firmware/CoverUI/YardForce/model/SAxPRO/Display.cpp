@@ -280,7 +280,7 @@ void DisplaySAXPRO::loop_low_prio() {
 
     // Emergencies
     static bool last_stop_button = false;
-    if (subscription::recv_ll_status.emergency_bitmask & LL_EMERGENCY_BITS_STOP)  // Stop switch
+    if (subscription::recv_ll_status.emergency_bitmask & LL_EMERGENCY_BIT_STOP)  // Stop switch
     {
         v_led_emergency_stop->set(LED_blink_fast);
         strncpy(status_ticker, EMERGENCY_CLEAR_TEXT, STATUS_TICKER_LENGTH);
@@ -293,7 +293,7 @@ void DisplaySAXPRO::loop_low_prio() {
         last_stop_button = false;
     }
 
-    if (subscription::recv_ll_status.emergency_bitmask & LL_EMERGENCY_BITS_LIFT)  // Lifted or tilted
+    if (subscription::recv_ll_status.emergency_bitmask & LL_EMERGENCY_BIT_LIFT)  // Lifted or tilted
     {
         v_led_emergency_wheel->set(LED_blink_fast);
         strncpy(status_ticker, EMERGENCY_CLEAR_TEXT, STATUS_TICKER_LENGTH);

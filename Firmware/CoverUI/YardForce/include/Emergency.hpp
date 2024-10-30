@@ -2,8 +2,8 @@
  * @file Emergency.hpp
  * @author Apehaenger (joerg@ebeling.ws)
  * @brief YardForce CoverUI Emergency class for OpenMower https://github.com/ClemensElflein/OpenMower
- * @version 0.4
- * @date 2024-10-02
+ * @version 0.5
+ * @date 2024-10-30
  *
  * @copyright Copyright (c) 2023, 2024
  *
@@ -25,7 +25,7 @@ class Emergency {
     struct PinStateDef {
         uint8_t pin;
         uint8_t pin_mode;
-        Emergency_state state;
+        EmergencyState state;
     };
 
     const PinStateDef *kPinStatesPtr;  // Pointer to an array of PinStateDef's (order doesn't matter)
@@ -43,14 +43,14 @@ class Emergency {
      *
      */
     void read() {
-        state_ = 0;  // We might have more emergency sensors and switch than OM Emergency_states. So we need to OR them instead of assign them 1:1
+        state_ = 0;
         for (size_t i = 0; i < kNumEmergencies; i++) {
             auto pin_state = *(kPinStatesPtr + i);
             if (digitalRead(pin_state.pin) == HIGH)
-                state_ |= pin_state.state;
+                state_ |= (int)pin_state.state;
         }
         if (state_)
-            state_ |= Emergency_state::Emergency_latch;
+            state_ |= (int)EmergencyState::LATCH;
     }
 
     /**
@@ -73,7 +73,7 @@ class Emergency {
     void read_and_send_if_emergency() {
         read();
 
-        if (state_ & Emergency_state::Emergency_latch && !(state_last_sent_ & Emergency_state::Emergency_latch)) {
+        if (state_ & (int)EmergencyState::LATCH && !(state_last_sent_ & (int)EmergencyState::LATCH)) {
             send();
             next_periodic_cycle = millis() + PERIODIC_SEND_CYCLE;
         }
@@ -87,7 +87,7 @@ class Emergency {
      */
     void periodic_send() {
         // Active emergency
-        if (state_ & Emergency_state::Emergency_latch) {
+        if (state_ & (int)EmergencyState::LATCH) {
             send();
             next_periodic_cycle = millis() + PERIODIC_SEND_CYCLE;
             return;

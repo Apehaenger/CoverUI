@@ -21,17 +21,6 @@ enum LED_state {
     LED_on = 0b111
 };
 
-// Used only by Stock-CoverUI
-// Same bitmask as in ll_status.emergency_bitmask (LowLevel, datatypes.h)
-enum Emergency_state
-{
-    Emergency_latch = 0b00001,
-    Emergency_stop1 = 0b00010,
-    Emergency_stop2 = 0b00100,
-    Emergency_lift1 = 0b01000,
-    Emergency_lift2 = 0b10000
-};
-
 // CoverUI subscription topic_bitmask
 enum Topic_state
 {

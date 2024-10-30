@@ -2,8 +2,8 @@
  * @file RM-ECOW-V100/assembly.cpp
  * @author Apehaenger (joerg@ebeling.ws)
  * @brief YardForce RM-ECOW-V1.0.0 CoverUI Assembly for OpenMower https://github.com/ClemensElflein/OpenMower
- * @version 0.1
- * @date 2024-10-01
+ * @version 0.2
+ * @date 2024-10-30
  *
  * @copyright Copyright (c) 2024
  *
@@ -87,14 +87,14 @@ ButtonsRMECOWV100 buttons(kBtnDefByButtonNumMap);
 // ----- Emergency -----
 const Emergency::PinStateDef kEmergencyPinStateDefs[] = {
 #ifdef MOD_HALL
-    {PIN_HALL1, INPUT_PULLUP, Emergency_state::Emergency_lift1},
-    {PIN_HALL2, INPUT_PULLUP, Emergency_state::Emergency_lift1},
-    {PIN_HALL3, INPUT_PULLUP, Emergency_state::Emergency_lift2},
-    {PIN_HALL4, INPUT_PULLUP, Emergency_state::Emergency_lift2},
+    {PIN_LIFT, INPUT_PULLUP, EmergencyState::LIFT},
+    {PIN_LIFTX, INPUT_PULLUP, EmergencyState::LIFTX},
+    {PIN_LBUMP, INPUT_PULLUP, EmergencyState::LBUMP},
+    {PIN_RBUMP, INPUT_PULLUP, EmergencyState::RBUMP},
 #endif
 #ifdef MOD_STOP
-    {PIN_STOP_JP5, INPUT_PULLUP, Emergency_state::Emergency_stop1},
-    {PIN_STOP_JP6, INPUT_PULLUP, Emergency_state::Emergency_stop2}
+    {PIN_STOP_JP5, INPUT_PULLUP, EmergencyState::STOP1},
+    {PIN_STOP_JP6, INPUT_PULLUP, EmergencyState::STOP2}
 #endif
 };
 

@@ -2,8 +2,8 @@
  * @file RM-ECOW-V100/assembly.hpp
  * @author Apehaenger (joerg@ebeling.ws)
  * @brief YardForce RM-ECOW-V1.0.0 CoverUI Assembly for OpenMower https://github.com/ClemensElflein/OpenMower
- * @version 0.1
- * @date 2024-10-01
+ * @version 0.2
+ * @date 2024-10-30
  *
  * @copyright Copyright (c) 2024
  *
@@ -55,10 +55,10 @@
 #define PIN_STOP_JP5 PC10
 #define PIN_STOP_JP6 PA15
 
-#define PIN_HALL1 PA8   // LIFT
-#define PIN_HALL2 PF6   // LIFTX
-#define PIN_HALL3 PA12  // LBUMP
-#define PIN_HALL4 PA11  // RBUMP
+#define PIN_LIFT PA8
+#define PIN_LIFTX PF6
+#define PIN_LBUMP PA12
+#define PIN_RBUMP PA11
 
 extern LEDcontrolRMECOWV1x leds;
 
